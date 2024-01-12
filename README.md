@@ -137,7 +137,7 @@ I briefly describe program components worthy of note here.
 
 - For accelerating scene traversal, I employed binary bounding volume hierarchy (BVH) and surface area heuristics (SAH) with full sweeping to build the acceleration structure.
 
-- For accelerating gathering process, I employed kd-tree, but uniform grid with locality-sensitive hash (hash grid) is a better choice, as construction and query time complexity is much lower than kd-tree with respect to the number of vertices in the cache. The vertex cache is constructed for all threads instead of one cache oer thread, so both construction and gathering is slow.
+- For accelerating gathering process, I employed kd-tree, but uniform grid with locality-sensitive hash (hash grid) is a better choice, as construction and query time complexity is much lower than kd-tree with respect to the number of vertices in the cache. The vertex cache is constructed for all threads instead of one cache per thread, so both construction and gathering is slow.
 
 ### Code Sections
 I briefly describe code sections worthy of note to help understand the codebase here.
