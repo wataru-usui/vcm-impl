@@ -75,18 +75,18 @@ This is our initial formulation and our interest is to solve for $I$. In practic
 
 To apply sophisticated techniques, it is necessary to express the equations in an alternative form.
 
-We first introduce change of variable by relation between projected solid angle and area measure of two vertices $\frac{d\sigma^\perp(r,\widehat{r-r'})}{dA(r')}=\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$, where $N(r)$ is the normal to the surface. We also introduce a binary indicator between two vertices $V(r,r')$ that represents geometric occulusion. Combining them together we define a geometric coefficient $G(r,r')=\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$.
+We first introduce change of variable by relation between projected solid angle and area measure of two vertices $\frac{d\sigma^\perp(r,\widehat{r-r'})}{dA(r')}=\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$, where $N(r)$ is the normal to the surface. We also introduce a binary indicator between two vertices $V(r,r')$ that represents geometric occulusion. Combining them together we define a geometric coefficient $G(r,r')=$V(r,r')\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$.
 
 Then express the rendering equation as the three vertex form.
 $$L_o(r',\widehat{r''-r'})=L_e(r',\widehat{r''-r'})+\int_\mathcal{M}f_s(r',\widehat{r''-r'},\widehat{r'-r})L_o(r,\widehat{r'-r})G(r,r')dA(r)$$
 
 It follows that the our interest $I$ can be expanded into infinite sum of chains of integrals, the vertex form.
-$I=\sum_{k\geq 1}\int_{\mathcal{M}^{k+1}}L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\prod_{k\gt i\geq 1}f_s(r_i,\widehat{r_{i+1}-r_i},\widehat{r_i-r_{i-1}})G(r_i,r_{i+1})W_e(r_k,\widehat{r_k-r_{k-1}})dA(r_0)\ldots dA(r_k)$
+$I=\sum_{1\leq k}\int_{\mathcal{M}^{k+1}}L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\prod_{1\leq i\lt k}f_s(r_i,\widehat{r_{i+1}-r_i},\widehat{r_i-r_{i-1}})G(r_i,r_{i+1})W_e(r_k,\widehat{r_k-r_{k-1}})dA(r_0)\ldots dA(r_k)$
 
 Motivation of this form is so that we can apply multiple importance sampling (MIS) that follows.
 
-We can further simplify it by introducing the path space; $\Psi=\bigcup_{k\geq 1}\Psi_k$ with $\Psi_k=\mathcal{M}^{k+1}$, the area-product measure; $\mu(D)=\int_D dA(r_0)\cdots dA(r_k)$ and the path measurement function;
-$$f(\overline{r})=L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\prod_{k\gt i\geq 1}f_s(r_i,\widehat{r_{i+1}-r_i},\widehat{r_i-r_{i-1}})G(r_i,r_{i+1})W_e(r_k,\widehat{r_k-r_{k-1}})$$
+We can further simplify it by introducing the path space; $\Psi=\bigcup_{1\leq k}\Psi_k$ with $\Psi_k=\mathcal{M}^{k+1}$, the area-product measure; $\mu(D)=\int_D dA(r_0)\cdots dA(r_k)$ and the path measurement function;
+$$f(\overline{r})=L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\prod_{1\leq i\lt k}f_s(r_i,\widehat{r_{i+1}-r_i},\widehat{r_i-r_{i-1}})G(r_i,r_{i+1})W_e(r_k,\widehat{r_k-r_{k-1}})$$
 
 Then we have a single integration over the path space domain;
 $$I=\int_\Psi f(\overline{r})d\mu(\overline{r})$$
