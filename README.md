@@ -131,7 +131,7 @@ Theoretical generality of this method is great, but it leaves a practical concer
 
 ## Implementation
 ### Overview
-The implementation first reads the scene and render configuration files. Then constructs the BVH structure and does the precalculations for light samplers. Then it samples light paths by traversing the scene and stores them in the vertex cache. This process is parallelized over multiple threads. Then it constructs the kd-tree for the vertex cache. Then it connects and merges the vertices in the cache to calculate the weights and accumulate the weighted estimates into image pixels, while testing for geometric occulusion for vertex connection and gathering vertices for vertex merging. This process is also parallelized.
+The implementation first reads the scene and render configuration files. Then it constructs the BVH structure and does the precalculations for light samplers. Then it samples light paths by traversing the scene and stores them in the vertex cache. This process is parallelized over multiple threads. Then it constructs the kd-tree for the vertex cache. Then it connects and merges the vertices in the cache to calculate the weights and accumulate the weighted estimates into image pixels, while testing for geometric occulusion for vertex connection and gathering vertices for vertex merging. This process is also parallelized.
 ### Program Components
 I briefly describe program components worthy of note here.
 
