@@ -75,7 +75,7 @@ This is our initial formulation and our interest is to solve for $I$. In practic
 
 To apply sophisticated techniques, it is necessary to express the equations in an alternative form.
 
-We first introduce change of variable by relation between projected solid angle and area measure of two vertices $\frac{d\sigma^\perp(r,\widehat{r-r'})}{dA(r')}=\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$, where $N(r)$ is the normal to the surface. We also introduce a binary indicator between two vertices $V(r,r')$ that represents geometric occulusion. Combining them together we define a geometric coefficient $G(r,r')=$V(r,r')\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$.
+We first introduce change of variable by relation between projected solid angle and area measure of two vertices $\frac{d\sigma^\perp(r,\widehat{r-r'})}{dA(r')}=\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$, where $N(r)$ is the normal to the surface. We also introduce a binary indicator between two vertices $V(r,r')$ that represents geometric occulusion. Combining them together we define a geometric coefficient $G(r,r')=V(r,r')\frac{|N(r)\cdot \widehat{r-r'}||N(r')\cdot \widehat{r-r'}|}{||r-r'||^2}$.
 
 Then express the rendering equation as the three vertex form.
 $$L_o(r',\widehat{r''-r'})=L_e(r',\widehat{r''-r'})+\int_\mathcal{M}f_s(r',\widehat{r''-r'},\widehat{r'-r})L_o(r,\widehat{r'-r})G(r,r')dA(r)$$
