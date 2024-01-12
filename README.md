@@ -168,5 +168,5 @@ I briefly describe code sections worthy of note to help understand the codebase 
 - [*Physically Based Rendering:From Theory To Implementation*](https://pbr-book.org/4ed/contents)
 - [*xoshiro / xoroshiro generators and the PRNG shootout*](https://prng.di.unimi.it/)
 - [*On fast Construction of SAH-based Bounding Volume Hierarchies*](https://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf)
-- [*Fast Minimum Storage Ray Triangle Intersectio*](https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf)
+- [*Fast Minimum Storage Ray Triangle Intersection*](https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf)
 - [*The Stanford 3D Scanning Repository*](https://graphics.stanford.edu/data/3Dscanrep/)
