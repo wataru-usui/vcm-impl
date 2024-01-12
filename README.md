@@ -22,11 +22,12 @@ feed scene and render configuration files like so;
 ```
 and it should produce the rendered image file in PFM format.
 ## Gallery
-Here are some images rendered with the program.
-![bunny-1](docs/bunny-1.png)
-![bunny-2](docs/bunny-2.png)
+Here are some images rendered with this program.
 ![cornell](docs/cornell.png)
 ![dragon](docs/dragon.png)
+And some images rendered with similar programs of mine.
+![bunny-1](docs/bunny-1.png)
+![bunny-2](docs/bunny-2.png)
 ## Preliminaries
 For those who are unfamiliar with rendering, light transport theory or monte carlo ray tracing, see below.
 ### What is rendering?
@@ -128,10 +129,42 @@ It can handle SDS paths by loosely speaking, blurring energy contribution over t
 
 Theoretical generality of this method is great, but it leaves a practical concern. For small radii of kernel, one needs to cache and gather millions of vertex points, which is a memory-intensive process, in contrast with the vertex connection methods which has a constant space complexity with respect to the simulation size.
 
-### Implementation
-For the PRNG, I employed one from the xorshift family, although PCG family seems to be the standard choice for monte carlo ray tracing.
+## Implementation
+### Program Components
+I briefly describe program components worthy of note here.
 
-For accelerating scene traversal, I employed binary bounding volume hierarchy (BVH) and surface area heuristics (SAH) with full sweeping to build the acceleration structure.
+- For the PRNG, I employed one from the xorshift family, although PCG family seems to be the standard choice for monte carlo ray tracing.
 
-For accelerating gathering process, I employed kd-tree, but uniform grid with locality-sensitive hash (hash grid) is a better choice, as construction and query time complexity is much lower than kd-tree with respect to the number of vertices in the cache.
+- For accelerating scene traversal, I employed binary bounding volume hierarchy (BVH) and surface area heuristics (SAH) with full sweeping to build the acceleration structure.
 
+- For accelerating gathering process, I employed kd-tree, but uniform grid with locality-sensitive hash (hash grid) is a better choice, as construction and query time complexity is much lower than kd-tree with respect to the number of vertices in the cache. The vertex cache is constructed for all threads instead of one cache oer thread, so both construction and gathering is slow.
+
+### Code Sections
+I briefly describe code sections worthy of note to help understand the codebase here.
+
+- L#236-281: PRNG (xoroshiro128+).
+- L#283-376: Basic vector maths and reflection/refraction vector transforms.
+- L#382-484: Intersection tests and statistical routines of geometric primitives.
+- L#517-531: Dielectric and conductive fresnel reflection coefficient calculations.
+- L#533-575: Utilities for sampling BRDF by inversion method.
+- L#577-783: Emission distribution functions (I made it up) and BRDF evaluation and sampling.
+- L#797-834: Precalculation of discrete distribution of lights in the scene.
+- L#835-1017: BVH construction by SAH with full sweep and traversal.
+- L#1158-1185: Initial ray sampling for camera and light.
+- L#1227-1294: Scene traversal, path generation and saving vertex infromation.
+- L#1295-1337: Native path tracing.
+- L#1338-1374: kd-tree construction.
+- L#1375-1565: Vertex merging (gathering) process; weight calculations and estimate accumulations.
+- L#1566-1940: Vertex connection process; weight calculations and estimate accumulations.
+- L#1941-2081: Vertex connection and merging.
+- L#2082-2376: Vertex connection process (Another vertex connection process, because weight calculations are different (less) for bidirectional path tracing); weight calculations and estimate accumulations.
+- L#2377-2426: Bidirectional path tracing.
+## Reference
+- (*Light transport simulation with vertex connection and merging*)[https://iliyan.com/publications/VertexMerging]
+- (*Disney's Practical Guide to Path Tracing*)[https://www.youtube.com/watch?v=frLwRLS_ZR0]
+- (*Robust Monte Carlo Methods for Light Transport Simulation*)[https://graphics.stanford.edu/papers/veach_thesis/]
+- (*Physically Based Rendering:From Theory To Implementation*)[https://pbr-book.org/4ed/contents]
+- (*xoshiro / xoroshiro generators and the PRNG shootout*)[https://prng.di.unimi.it/]
+- (*On fast Construction of SAH-based Bounding Volume Hierarchies*)[https://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf]
+- (*Fast Minimum Storage Ray Triangle Intersectio*)[https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf]
+- (*The Stanford 3D Scanning Repository*)[https://graphics.stanford.edu/data/3Dscanrep/]
