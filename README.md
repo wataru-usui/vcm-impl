@@ -160,11 +160,11 @@ I briefly describe code sections worthy of note to help understand the codebase 
 - L#2082-2376: Vertex connection process (Another vertex connection process, because weight calculations are different (less) for bidirectional path tracing); weight calculations and estimate accumulations.
 - L#2377-2426: Bidirectional path tracing.
 ## Reference
-- (*Light transport simulation with vertex connection and merging*)[https://iliyan.com/publications/VertexMerging]
-- (*Disney's Practical Guide to Path Tracing*)[https://www.youtube.com/watch?v=frLwRLS_ZR0]
-- (*Robust Monte Carlo Methods for Light Transport Simulation*)[https://graphics.stanford.edu/papers/veach_thesis/]
-- (*Physically Based Rendering:From Theory To Implementation*)[https://pbr-book.org/4ed/contents]
-- (*xoshiro / xoroshiro generators and the PRNG shootout*)[https://prng.di.unimi.it/]
-- (*On fast Construction of SAH-based Bounding Volume Hierarchies*)[https://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf]
-- (*Fast Minimum Storage Ray Triangle Intersectio*)[https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf]
-- (*The Stanford 3D Scanning Repository*)[https://graphics.stanford.edu/data/3Dscanrep/]
+- [*Light transport simulation with vertex connection and merging*](https://iliyan.com/publications/VertexMerging)
+- [*Disney's Practical Guide to Path Tracing*](https://www.youtube.com/watch?v=frLwRLS_ZR0)
+- [*Robust Monte Carlo Methods for Light Transport Simulation*](https://graphics.stanford.edu/papers/veach_thesis/)
+- [*Physically Based Rendering:From Theory To Implementation*](https://pbr-book.org/4ed/contents)
+- [*xoshiro / xoroshiro generators and the PRNG shootout*](https://prng.di.unimi.it/)
+- [*On fast Construction of SAH-based Bounding Volume Hierarchies*](https://www.sci.utah.edu/~wald/Publications/2007/ParallelBVHBuild/fastbuild.pdf)
+- [*Fast Minimum Storage Ray Triangle Intersectio*](https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf)
+- [*The Stanford 3D Scanning Repository*](https://graphics.stanford.edu/data/3Dscanrep/)
