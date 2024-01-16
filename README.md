@@ -85,7 +85,7 @@ $I=\sum_{1\leq k}\int_{\mathcal{M}^{k+1}}L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\pr
 
 Motivation of this form is so that we can apply multiple importance sampling (MIS) that follows.
 
-We can further simplify it by introducing the path space; $\Psi=\bigcup_{1\leq k}\Psi_k$ with $\Psi_k=\mathcal{M}^{k+1}$, the area-product measure; $\mu(D)=\int_D dA(r_0)\cdots dA(r_k)$ and the path measurement function;
+We can further simplify it by introducing the path space; $\Psi=\bigcup_{1\leq k}\Psi_k$ with $\Psi_k=\mathcal{M}^{k+1}$, the area-product measure; $\mu_k(D)=\int_D dA(r_0)\cdots dA(r_k)$, its extension $\mu_(D)=\sum_{1\leq k}\mu_k(D\cap \Psi_k)$ and the path measurement function;
 $$f(\overline{r})=L_e(r_0,\widehat{r_1-r_0})G(r_0,r_1)\prod_{1\leq i\lt k}f_s(r_i,\widehat{r_{i+1}-r_i},\widehat{r_i-r_{i-1}})G(r_i,r_{i+1})W_e(r_k,\widehat{r_k-r_{k-1}})$$
 
 Then we have a single integration over the path space domain;
